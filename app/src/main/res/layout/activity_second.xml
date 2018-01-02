@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="View层次结构：ScrollView中包含LinearLayout,LinearLayout中包含RecyclerView"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="滑动冲突：竖向滑动的ScrollView和横向滑动的RecyclerView滑动冲突"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ff5252"
+                android:orientation="horizontal" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0b9de6"
+                android:orientation="horizontal" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0bff54"
+                android:orientation="horizontal" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#aa00ff"
+                android:orientation="horizontal" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffe30b"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
