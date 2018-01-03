@@ -1,11 +1,14 @@
 package com.haha.mmxb.slidingconflict;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ScrollView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by xueying on 2018/1/2.
@@ -16,10 +19,9 @@ public class SecondActivity extends Activity {
     private RecyclerView recyclerView1;
     private RecyclerView recyclerView2;
     private RecyclerView recyclerView3;
-    private RecyclerView recyclerView4;
-    private RecyclerView recyclerView5;
 
-    private ScrollView scrollView;
+    private MyScrollViewS scrollView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,8 +30,7 @@ public class SecondActivity extends Activity {
         recyclerView1 = findViewById(R.id.recycler_view1);
         recyclerView2 = findViewById(R.id.recycler_view2);
         recyclerView3 = findViewById(R.id.recycler_view3);
-        recyclerView4 = findViewById(R.id.recycler_view4);
-        recyclerView5 = findViewById(R.id.recycler_view5);
+        scrollView = findViewById(R.id.scroll_view);
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this);
         linearLayoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -46,15 +47,20 @@ public class SecondActivity extends Activity {
         recyclerView3.setLayoutManager(linearLayoutManager3);
         recyclerView3.setAdapter(new SecondAdapter());
 
-        LinearLayoutManager linearLayoutManager4 = new LinearLayoutManager(this);
-        linearLayoutManager4.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView4.setLayoutManager(linearLayoutManager4);
-        recyclerView4.setAdapter(new SecondAdapter());
+        interceptTouch();
+    }
 
-        LinearLayoutManager linearLayoutManager5 = new LinearLayoutManager(this);
-        linearLayoutManager5.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView5.setLayoutManager(linearLayoutManager5);
-        recyclerView5.setAdapter(new SecondAdapter());
-
+    /**
+     * 拦截recyclerView3上的所有事件
+     */
+    @SuppressLint("ClickableViewAccessibility")
+    private void interceptTouch() {
+        recyclerView3.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
     }
 }
